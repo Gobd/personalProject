@@ -39,16 +39,18 @@ $scope.showAdd = false;
 
 //disable channel input box if channel already exists
   $scope.exist = false;
-  $scope.channelStat = true;
+  $scope.channelStat = false;
+  $scope.channelSymbols = false;
   $scope.channelChecker = function(){
    var that = this;
-    this.channelStat = false;
+    that.channelStat = false;
+    that.channelSymbols = /[^A-Za-z0-9\s]/g.test(that.roomTitle);
     roomsList.forEach(function(a){
       if (a === that.roomTitle) {
         that.channelStat = true;
         that.exist = true;
       }
-    });
+      });
   };
 
 });

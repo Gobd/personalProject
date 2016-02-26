@@ -33,7 +33,7 @@ html {
 .channelAdd {
   margin-top: 15px;
 }
-#channelError {
+.channelError {
   margin-top: 10px;
   color: red;
   text-align: center;
