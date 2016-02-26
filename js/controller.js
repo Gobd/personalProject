@@ -8,8 +8,8 @@ $scope.rooms = $firebaseArray(roomsRef);
 $scope.room = $firebaseArray(roomRef);
 
 //this changes the state when we click on a room, and roomRef pulls from the $stateParams to get the room content
-$scope.getRoom = function(roomId){
-    $state.go('rooms', {roomId: roomId});
+$scope.getRoom = function(name){
+    $state.go('rooms', {roomName: name});
 };
 
 //makes array of current room names so people can't overwrite existing rooms
@@ -34,8 +34,8 @@ $scope.createRoom = function() {
         $scope.chatText = '';
   };
 
-  //initially hide the add channel input
-  $scope.showAdd = false;
+//initially hide the add channel input
+$scope.showAdd = false;
 
 //disable channel input box if channel already exists
   $scope.exist = false;
