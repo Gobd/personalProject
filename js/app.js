@@ -14,10 +14,11 @@ angular.module('app', ['firebase', 'ui.router'])
       controller: 'ctrl',
       resolve: {
         roomRef: function($stateParams, svc) {
-          console.log('from appjs' + svc.finder('tester'));
+          console.log('room:  ' + svc.getRoom($stateParams.roomId));
           return svc.getRoom($stateParams.roomId);
         },
         roomsRef: function(svc) {
+          console.log('rooms:  ' + svc.getRooms());
           return svc.getRooms();
         }
       }
