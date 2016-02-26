@@ -1,23 +1,29 @@
-angular.module('app').service('svc', function(fb, $firebaseObject, $firebaseArray, $q){
+angular.module('app').service('svc', function(fb, $q){
 
   this.getRooms = function(){
-    var roomsRef = new Firebase(fb.url + '/rooms');
-    var rooms = $firebaseArray(roomsRef);
-    var defered = $q.defer();
-    rooms.$loaded().then(function(response){
-      defered.resolve(response);
-    });
-    return defered.promise;
+    return new Firebase(fb.url + '/rooms/');
   };
 
   this.getRoom = function(roomId){
-    var roomRef = new Firebase(fb.url + '/rooms/' + roomId);
-    var room = $firebaseArray(roomRef);
-    var defered = $q.defer();
-    room.$loaded().then(function(response){
-      defered.resolve(response);
-    });
-    return defered.promise;
+    return new Firebase(fb.url + '/rooms/' + roomId);
   };
+
+  this.finder = function(name) {
+    console.log(name);
+    var deferred = $q.defer();
+    var ref = new Firebase(fb.url + '/rooms/');
+      ref.orderByChild("name").equalTo(name).on("child_added", function(snapshot) {
+        var key = snapshot.key();
+        console.log(key);
+        deferred.resolve(snapshot.key());
+      // return new Firebase(fb.url + '/rooms/' + snapshot.key());
+    });
+    return deferred.promise;
+  };
+
+  // this.finder('Lobby');
+
+  // -KBU--3L_-uvYk1eOKCi
+
 
 });

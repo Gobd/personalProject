@@ -4,16 +4,17 @@ angular.module('app', ['firebase', 'ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/rooms/");
+  $urlRouterProvider.otherwise("/rooms/Lobby");
 
   $stateProvider
     .state('rooms', {
       url: "/rooms/{roomId}",
-      params: {roomId: { value: "home" }},
+      params: {roomId: { value: "Lobby" }},
       templateUrl: "partials/rooms.html",
       controller: 'ctrl',
       resolve: {
         roomRef: function($stateParams, svc) {
+          console.log('from appjs' + svc.finder('tester'));
           return svc.getRoom($stateParams.roomId);
         },
         roomsRef: function(svc) {

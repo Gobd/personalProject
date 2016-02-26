@@ -7,13 +7,14 @@
     <div class="sidebar col-sm-3">
         Channels: ({{rooms.length}})
         <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
-        <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()">
+        <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()" novalidate>
             <div class="input-group">
               <span class="input-group-btn">
-                <button ng-disabled="newRoomForm.$invalid" class="btn btn-default" type="submit">Go</button>
+                <button class="btn btn-default" ng-disabled="channelStat" type="submit">Go</button>
               </span>
-              <input type="text" ng-model="roomTitle" class="form-control" placeholder="Create room...">
+              <input type="text" ng-change="channelChecker()" ng-model="roomTitle" class="form-control" placeholder="Create room...">
             </div>
+            <p id="channelError" ng-if="exist && channelStat">Channel already exists</p>
         </form>
       <ul class="list-group channelList">
           <li ng-repeat="room in rooms" class="list-group-item">
