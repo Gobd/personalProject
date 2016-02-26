@@ -1,0 +1,35 @@
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+.sidebar {
+  border-style: solid;
+  border-color: red;
+  height: 95vh;
+  padding-top: 15px;
+}
+.chatSection {
+  border-style: solid;
+  height: 95vh;
+  position: relative;
+}
+.topBar {
+  height:5vh;
+}
+.bottomAlign {
+  margin-bottom:15px;
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+  }
+.glyphicon.glyphicon-plus-sign {
+  font-size: 16px;
+}
+.channelList {
+  margin-top: 15px;
+}
+.channelAdd {
+  margin-top: 15px;
+}

@@ -1,0 +1,49 @@
+<div class="container-fluid">
+  <div class="row topBar">
+    TOPBAR
+  </div>
+  <div class="row">
+
+    <div class="sidebar col-sm-3">
+        Channels: ({{rooms.length}})
+        <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
+        <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()">
+            <div class="input-group">
+              <span class="input-group-btn">
+                <button ng-disabled="newRoomForm.$invalid" class="btn btn-default" type="submit">Go</button>
+              </span>
+              <input type="text" ng-model="roomTitle" class="form-control" placeholder="Create room...">
+            </div>
+        </form>
+      <ul class="list-group channelList">
+          <li ng-repeat="room in rooms" class="list-group-item">
+            <span ng-click="getRoom(room.$id)">{{room.name}}</span>
+          </li>
+      </ul>
+    </div>
+
+    <div class="chatSection col-sm-9">
+      <div class="bottomAlign">
+        <ul class="list-group">
+          <!-- ng-if removes empty object at end -->
+            <li ng-if="$index<room.length-1" ng-repeat="chat in room" class="list-group-item">
+              <span>
+                {{chat.text}}
+                <span data-livestamp="{{chat.time}}"></span>
+              </span>
+            </li>
+        </ul>
+          <form name="newTextForm" ng-submit="chat()">
+              <div class="input-group">
+                <span class="input-group-btn">
+                  <button ng-disabled="newTextForm.$invalid" class="btn btn-default" type="submit">Go</button>
+                </span>
+                <input type="text" ng-model="chatText" class="form-control" placeholder="Chat...">
+              </div>
+          </form>
+      </div>
+    </div>
+
+
+  </div>
+</div>
