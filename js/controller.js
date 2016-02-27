@@ -1,5 +1,7 @@
 angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef){
 
+  // animated fadeInLeft add to class sidebar on hamburger click
+
 //easy way to add date to posts, firebase timestamp wouldn't work with moment and livestamp
 var date = new Date().toISOString();
 
@@ -37,7 +39,7 @@ $scope.createRoom = function() {
 //initially hide the add channel input
 $scope.showAdd = false;
 
-//disable channel input box if channel already exists
+//disable channel input box if channel already exists or if someone tries to input symbols
   $scope.exist = false;
   $scope.channelStat = false;
   $scope.channelSymbols = false;
@@ -51,6 +53,14 @@ $scope.showAdd = false;
         that.exist = true;
       }
       });
+  };
+
+  //animating
+  $scope.changeClass = function(){
+    if ($scope.class === "showNav")
+      $scope.class = "hideNav";
+    else
+      $scope.class = "showNav";
   };
 
 });

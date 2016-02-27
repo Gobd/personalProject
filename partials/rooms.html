@@ -1,10 +1,11 @@
 <div class="container-fluid">
   <div class="row topBar">
+    <span ng-click="changeClass()" class="glyphicon glyphicon-menu-hamburger"></span>
     TOPBAR
   </div>
   <div class="row">
 
-    <div class="sidebar col-sm-3">
+    <div ng-class="class" class="sidebar col-sm-3">
         Channels: ({{rooms.length}})
         <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
         <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()">
@@ -36,7 +37,7 @@
             </li>
         </ul>
           <form name="newTextForm" ng-submit="chat()">
-              <div class="input-group">
+              <div class="input-group chatInp">
                 <span class="input-group-btn">
                   <button ng-disabled="newTextForm.$invalid" class="btn btn-default" type="submit">Go</button>
                 </span>

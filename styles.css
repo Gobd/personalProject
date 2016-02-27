@@ -5,30 +5,38 @@ html {
   box-sizing: inherit;
 }
 .sidebar {
-  border-style: solid;
-  border-color: red;
-  height: 95vh;
+  background-color: #DEEDDE;
+  height: 92vh;
   padding-top: 15px;
+  width: 25%;
+  z-index: 1;
 }
 .chatSection {
   border-style: solid;
-  height: 95vh;
+  height: 92vh;
   position: relative;
 }
+.chatInp {
+  z-index: 0;
+}
 .topBar {
-  height:5vh;
+  height: 8vh;
 }
 .bottomAlign {
   margin-bottom:15px;
-    position: absolute;
-    bottom: 0;
-    left: 15px;
-  }
+  position: absolute;
+  bottom: 0;
+  left: 15px;
+}
 .glyphicon.glyphicon-plus-sign {
   font-size: 16px;
 }
+.glyphicon.glyphicon-menu-hamburger {
+  display: none;
+}
 .channelList {
   margin-top: 15px;
+  z-index: 0;
 }
 .channelAdd {
   margin-top: 15px;
@@ -37,4 +45,28 @@ html {
   margin-top: 10px;
   color: red;
   text-align: center;
+}
+@media (max-width: 770px) {
+.sidebar {
+  float: left;
+  width: 30%;
+  }
+.glyphicon.glyphicon-menu-hamburger {
+  font-size: 30px;
+  display: block;
+}
+.showNav{
+  width: 30%;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.hideNav{
+  transform: translateX(-350px);
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
 }
