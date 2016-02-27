@@ -51,6 +51,7 @@ $scope.showAdd = false;
   };
 
   //animting sidebar for small screens
+  $scope.class = "showNav";
   $scope.changeClass = function(){
     if ($scope.class === "showNav")
       $scope.class = "hideNav";
@@ -58,6 +59,7 @@ $scope.showAdd = false;
       $scope.class = "showNav";
   };
 
-$scope.roomName = $stateParams.roomName;
+//lets us put the current room in the top bar
+  $scope.currentRoom = $stateParams.roomName;
 
 });

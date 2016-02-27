@@ -20,6 +20,11 @@ angular.module('app', ['firebase', 'ui.router'])
           return svc.getRooms();
         }
       }
+    })
+    .state('login', {
+      url: "/login",
+      templateUrl: "partials/login.html",
+      controller: 'loginCtrl',
     });
 
   });

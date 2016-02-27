@@ -6,6 +6,7 @@ html {
 }
 .sidebar {
   min-width: 200px;
+  max-width: 300px;
   background-color: #443242;
   height: 92vh;
   padding-top: 15px;
@@ -16,7 +17,6 @@ html {
   background-color: white;
   border-style: solid;
   height: 92vh;
-  position: relative;
 }
 .chatInp {
   z-index: 0;
@@ -28,7 +28,7 @@ ul#chatLog.list-group li.list-group-item{
   background-color: white;
 }
 .bottomAlign {
-  margin-bottom:15px;
+  margin: 0 15px 15px 0;
   position: absolute;
   bottom: 0;
   left: 15px;
@@ -85,28 +85,80 @@ li.list-group-item.ng-scope a:hover {
   background-color: #443242;
   border: none;
 }
+#signup {
+  transform: translateY(140%);
+  text-align: center;
+  margin: auto;
+  height: 198px;
+  width: 300px;
+}
+.gravImg img {
+  border-radius: 5px;
+}
+.gravImg {
+  display: inline-block;
+}
+.chatContainer {
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.chatContent {
+  width: 90%;
+  max-width: 800px;
+  display: inline-block;
+  vertical-align:top;
+}
+.chatName {
+  font-weight: 900;
+  font-size: 15px;
+}
+.chatTime {
+  font-weight: 200;
+  font-size: 12px;
+  color: #B8B7BD;
+
+}
+.chatText {
+
+}
 @media (max-width: 800px) {
 .sidebar {
   float: left;
-  width: 30%;
+  opacity: .2;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
   }
 .glyphicon.glyphicon-menu-hamburger {
-  font-size: 30px;
+  font-size: 50px;
   display: block;
 }
 .showNav{
-  min-width: 180px;
+  transform: translateX(2px);
+  min-width: 190px;
+  opacity: .94;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 .hideNav{
-  min-width: 180px;
-  transform: translateX(-350px);
+  opacity: .2;
+  transform: translateX(-170px);
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+}
+.bottomAlign {
+  margin: 0 15px 15px 22px;
+}
+@media (max-width: 600px) {
+  .chatContent {
+    width: 80%;
+  }
 }
 }

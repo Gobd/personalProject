@@ -1,0 +1,10 @@
+<div id="signup">
+  <form class="form-signin" name="loginForm" ng-submit="register()">
+    <h2 class="form-signin-heading">Please sign in</h2>
+    <input ng-model="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <input ng-model="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <button ng-disabled="loginForm.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+  <span ng-if="success">User {{success.uid}} successfully made.</span>
+    <span ng-if="fail">Failed: {{fail}}</span>
+</div>
