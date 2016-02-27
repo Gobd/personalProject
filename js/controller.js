@@ -51,7 +51,7 @@ $scope.showAdd = false;
   };
 
   //animting sidebar for small screens
-  $scope.class = "showNav";
+  $scope.class = "hideNav";
   $scope.changeClass = function(){
     if ($scope.class === "showNav")
       $scope.class = "hideNav";

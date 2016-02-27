@@ -58,7 +58,7 @@
 
       <ul class="list-group" id="chatLog">
         <!-- ng-if removes empty object at beginning -->
-          <div ng-if="$index>0" ng-repeat="chat in room | orderBy:time:true">
+          <div ng-if="$index>0" ng-repeat="chat in room | orderBy:time:true" ng-class="{'last':$last}">
             <div class="chatContainer">
               <div class="gravImg"><img ng-src="{{chat.profileImg}}" height="45px" alt=""></div>
               <div class="chatContent"><span class="chatName">{{chat.name}}</span> <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>

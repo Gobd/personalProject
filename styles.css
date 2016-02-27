@@ -19,6 +19,7 @@ body, html {
 }
 .chatSection {
   background-color: white;
+  min-width: calc(100% - 300px);
   height: 94vh;
   overflow: scroll;
 }
@@ -184,13 +185,16 @@ div.signupForms.ng-scope a {
 }
 @media (max-width: 800px) {
   .chatSection {
-    width: 100%;
     transform: translateY(-102%);
     z-index: 0;
-    min-width: 100%;
+    min-width: 105%;
+    margin-left: -20px;
   }
   .chatContent {
     width: 80%;
+  }
+div.ng-scope.last {
+    padding-bottom: 16px;
   }
 .sidebar {
   float: left;
@@ -210,7 +214,7 @@ div.signupForms.ng-scope a {
 }
 .showNav{
   min-width: 190px;
-  opacity: .94;
+  opacity: .96;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -218,7 +222,7 @@ div.signupForms.ng-scope a {
 }
 .hideNav{
   opacity: .2;
-  transform: translateX(-170px);
+  transform: translateX(-190px);
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -229,6 +233,9 @@ div.signupForms.ng-scope a {
 }
 span.currentRoom {
   display: none;
+}
+div.col-xs-3 img {
+  margin-left: 50%;
 }
 }
 }
