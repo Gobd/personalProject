@@ -27,8 +27,18 @@
       </ul>
     </div>
 
-  <div class="chatSection col-sm-9">
+  <div class="chatSection col-sm-9 col-xs-12">
     <div class="bottomAlign">
+
+      <form name="newTextForm" ng-submit="chat()">
+          <div class="input-group chatInp">
+            <span class="input-group-btn">
+              <button ng-disabled="newTextForm.$invalid" class="btn btn-default" type="submit">Go</button>
+            </span>
+            <input type="text" ng-model="chatText" class="form-control" placeholder="Chat..." required>
+          </div>
+      </form>
+
       <ul class="list-group" id="chatLog">
         <!-- ng-if removes empty object at end -->
           <div ng-if="$index<room.length-1" ng-repeat="chat in room">
@@ -41,14 +51,7 @@
 
           </div>
       </ul>
-        <form name="newTextForm" ng-submit="chat()">
-            <div class="input-group chatInp">
-              <span class="input-group-btn">
-                <button ng-disabled="newTextForm.$invalid" class="btn btn-default" type="submit">Go</button>
-              </span>
-              <input type="text" ng-model="chatText" class="form-control" placeholder="Chat..." required>
-            </div>
-        </form>
+
     </div>
   </div>
 

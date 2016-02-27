@@ -4,33 +4,38 @@ html {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+body, html {
+  height: 100%;
+  overflow: hidden;
+}
 .sidebar {
+  border-top-right-radius: 20px;
   min-width: 200px;
   max-width: 300px;
   background-color: #443242;
-  height: 92vh;
+  height: 94vh;
   padding-top: 15px;
   width: 25%;
   z-index: 1;
 }
 .chatSection {
   background-color: white;
-  border-style: solid;
-  height: 92vh;
+  height: 94vh;
+  overflow: scroll;
 }
 .chatInp {
   z-index: 0;
 }
 .topBar {
-  height: 8vh;
+  height: 80px;
 }
 ul#chatLog.list-group li.list-group-item{
   background-color: white;
 }
 .bottomAlign {
-  margin: 0 15px 15px 0;
+  margin: 15px 15px 15px 0;
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 15px;
 }
 .glyphicon.glyphicon-plus-sign {
@@ -101,7 +106,7 @@ li.list-group-item.ng-scope a:hover {
 .chatContainer {
   display: inline-block;
   vertical-align: top;
-  margin-bottom: 15px;
+  margin-top: 15px;
   width: 100%;
 }
 .chatContent {
@@ -124,9 +129,19 @@ li.list-group-item.ng-scope a:hover {
 
 }
 @media (max-width: 800px) {
+  .chatSection {
+    width: 100%;
+    transform: translateY(-101%);
+    z-index: 0;
+    min-width: 100%;
+  }
+  .chatContent {
+    width: 80%;
+  }
 .sidebar {
   float: left;
   opacity: .2;
+  z-index: 1;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
@@ -137,7 +152,6 @@ li.list-group-item.ng-scope a:hover {
   display: block;
 }
 .showNav{
-  transform: translateX(2px);
   min-width: 190px;
   opacity: .94;
   -webkit-transition: all .2s ease-in-out;
@@ -154,11 +168,12 @@ li.list-group-item.ng-scope a:hover {
   transition: all .2s ease-in-out;
 }
 .bottomAlign {
-  margin: 0 15px 15px 22px;
+  margin: 15px 15px 15px 22px;
 }
-@media (max-width: 600px) {
-  .chatContent {
-    width: 80%;
-  }
+/*@media (max-width:800px) and (min-width:768px) {
+  .chatSection {
+    min-width: 100%;
+    background-color: red;
+  }*/
 }
 }
