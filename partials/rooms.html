@@ -6,28 +6,30 @@
   <div class="row">
 
     <div ng-class="class" class="sidebar col-sm-3">
-        Channels: ({{rooms.length}})
-        <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
+          <div id="addChannel">
+            CHANNELS ({{rooms.length}})
+            <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
+          </div>
         <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()">
             <div class="input-group">
               <span class="input-group-btn">
                 <button ng-disabled="channelStat || channelSymbols || newRoomForm.$invalid" class="btn btn-default" type="submit">Go</button>
               </span>
-              <input type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="Create room..." required>
+              <input type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="Create channel..." required>
             </div>
             <p class="channelError" ng-if="exist && channelStat">Channel already exists</p>
             <p class="channelError" ng-if="showAdd && channelSymbols">No symbols</p>
         </form>
       <ul class="list-group channelList">
-          <li ng-repeat="room in rooms" class="list-group-item">
-            <span ng-click="getRoom(room.name)">{{room.name}}</span>
+          <li ng-repeat="room in rooms" class="list-group-item" ui-sref-active="activeChannel">
+            <a href="#" ui-sref="rooms({roomName: room.name})"># {{room.name}}</a>
           </li>
       </ul>
     </div>
 
     <div class="chatSection col-sm-9">
       <div class="bottomAlign">
-        <ul class="list-group">
+        <ul class="list-group" id="chatLog">
           <!-- ng-if removes empty object at end -->
             <li ng-if="$index<room.length-1" ng-repeat="chat in room" class="list-group-item">
               <span>

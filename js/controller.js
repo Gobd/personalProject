@@ -1,4 +1,4 @@
-angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef){
+angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef, $stateParams){
 
   // animated fadeInLeft add to class sidebar on hamburger click
 
@@ -8,11 +8,6 @@ var date = new Date().toISOString();
 // first we get the rooms and possible room content to fill the rooms sidebar
 $scope.rooms = $firebaseArray(roomsRef);
 $scope.room = $firebaseArray(roomRef);
-
-//this changes the state when we click on a room, and roomRef pulls from the $stateParams to get the room content
-$scope.getRoom = function(name){
-    $state.go('rooms', {roomName: name});
-};
 
 //makes array of current room names so people can't overwrite existing rooms
 var roomsList = [];
@@ -29,7 +24,7 @@ $scope.createRoom = function() {
     $scope.showAdd = false;
 };
 
-//this adds a chat to the openb room
+//this adds a chat to the open room
   $scope.chat = function () {
     $scope.room.$add({text: $scope.chatText,
                       time: date});
@@ -55,12 +50,14 @@ $scope.showAdd = false;
       });
   };
 
-  //animating
+  //animting sidebar for small screens
   $scope.changeClass = function(){
     if ($scope.class === "showNav")
       $scope.class = "hideNav";
     else
       $scope.class = "showNav";
   };
+
+$scope.roomName = $stateParams.roomName;
 
 });

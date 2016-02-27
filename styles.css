@@ -5,13 +5,15 @@ html {
   box-sizing: inherit;
 }
 .sidebar {
-  background-color: #DEEDDE;
+  min-width: 200px;
+  background-color: #443242;
   height: 92vh;
   padding-top: 15px;
   width: 25%;
   z-index: 1;
 }
 .chatSection {
+  background-color: white;
   border-style: solid;
   height: 92vh;
   position: relative;
@@ -22,6 +24,9 @@ html {
 .topBar {
   height: 8vh;
 }
+ul#chatLog.list-group li.list-group-item{
+  background-color: white;
+}
 .bottomAlign {
   margin-bottom:15px;
   position: absolute;
@@ -29,24 +34,58 @@ html {
   left: 15px;
 }
 .glyphicon.glyphicon-plus-sign {
-  font-size: 16px;
+  font-size: 22px;
+  transform: translateY(5px);
+  margin-left: 5px;
 }
 .glyphicon.glyphicon-menu-hamburger {
   display: none;
 }
+#addChannel {
+  transform: translateX(10px);
+  height: 30px;
+  line-height: 30px;
+  color: #9A8998;
+  font-size: 16px;
+}
 .channelList {
-  margin-top: 15px;
+  margin-top: 10px;
   z-index: 0;
 }
 .channelAdd {
-  margin-top: 15px;
+  margin-top: 10px;
 }
 .channelError {
   margin-top: 10px;
   color: red;
   text-align: center;
 }
-@media (max-width: 770px) {
+.list-group-item {
+  overflow: hidden;
+}
+li.list-group-item.ng-scope.activeChannel a {
+  color: white;
+}
+li.list-group-item.ng-scope.activeChannel a:hover {
+  color: #E0F7FF;
+}
+li.list-group-item.ng-scope.activeChannel {
+  background-color: #438B7E;
+  border-radius: 8px;
+}
+li.list-group-item.ng-scope a {
+  color: #9A8998;
+  text-decoration: none;
+  white-space: nowrap
+}
+li.list-group-item.ng-scope a:hover {
+  color: #848998;
+}
+.list-group li {
+  background-color: #443242;
+  border: none;
+}
+@media (max-width: 800px) {
 .sidebar {
   float: left;
   width: 30%;
@@ -56,13 +95,14 @@ html {
   display: block;
 }
 .showNav{
-  width: 30%;
+  min-width: 180px;
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
 }
 .hideNav{
+  min-width: 180px;
   transform: translateX(-350px);
   -webkit-transition: all .2s ease-in-out;
   -moz-transition: all .2s ease-in-out;
