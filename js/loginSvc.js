@@ -2,6 +2,7 @@ angular.module('app').service('loginSvc', function(fb, $q){
 
   var ref = new Firebase(fb.url);
 
+//create user, $q promise ensures both success and failure messsages get sent back to controller to show to user
   this.createUser = function(email, password){
    var defered = $q.defer();
    ref.createUser({
@@ -17,18 +18,20 @@ angular.module('app').service('loginSvc', function(fb, $q){
           return defered.promise;
       };
 
-  this.login = function(email, password){
-    ref.authWithPassword({
-      email: email,
-      password: password
-    }, function(error, authData) {
-      if (error) {
-        console.log("Login Failed!", error);
-      } else {
-        console.log("Authenticated successfully with payload:", authData);
-      }
-    });
-  };
-
+//login user, $q promise ensures both success and failure messsages get sent back to controller to show to user
+      this.login = function(email, password){
+       var defered = $q.defer();
+       ref.authWithPassword({
+         email: email,
+         password: password
+              }, function(error, authData) {
+              if (error) {
+                 defered.reject(error);
+              } else {
+                  defered.resolve(authData);
+                }
+              });
+              return defered.promise;
+          };
 
 });

@@ -90,7 +90,7 @@ li.list-group-item.ng-scope a:hover {
   background-color: #443242;
   border: none;
 }
-#signup {
+.signupForms {
   transform: translateY(140%);
   text-align: center;
   margin: auto;
@@ -123,10 +123,9 @@ li.list-group-item.ng-scope a:hover {
   font-weight: 200;
   font-size: 12px;
   color: #B8B7BD;
-
 }
-.chatText {
-
+.form-control.register {
+  margin-bottom: 15px;
 }
 @media (max-width: 800px) {
   .chatSection {
@@ -170,10 +169,5 @@ li.list-group-item.ng-scope a:hover {
 .bottomAlign {
   margin: 15px 15px 15px 22px;
 }
-/*@media (max-width:800px) and (min-width:768px) {
-  .chatSection {
-    min-width: 100%;
-    background-color: red;
-  }*/
 }
 }

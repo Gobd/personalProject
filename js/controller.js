@@ -1,11 +1,9 @@
 angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef, $stateParams){
 
-  // animated fadeInLeft add to class sidebar on hamburger click
-
 //easy way to add date to posts, firebase timestamp wouldn't work with moment and livestamp
 var date = new Date().toISOString();
 
-// first we get the rooms and possible room content to fill the rooms sidebar
+// first we get the rooms and room content to fill the rooms sidebar
 $scope.rooms = $firebaseArray(roomsRef);
 $scope.room = $firebaseArray(roomRef);
 

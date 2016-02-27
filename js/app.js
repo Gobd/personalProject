@@ -25,6 +25,11 @@ angular.module('app', ['firebase', 'ui.router'])
       url: "/login",
       templateUrl: "partials/login.html",
       controller: 'loginCtrl',
+    })
+    .state('register', {
+      url: "/register",
+      templateUrl: "partials/register.html",
+      controller: 'loginCtrl',
     });
 
   });
