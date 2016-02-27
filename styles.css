@@ -101,8 +101,15 @@ span.loggedInAs a {
 }
 .channelError {
   margin-top: 10px;
-  color: red;
+  color: #F68657;
   text-align: center;
+}
+.loginToChat {
+  margin: auto;
+  width: 142px;
+  font-size: 16px;
+  color: #F68657;
+  margin-top: 10px;
 }
 .list-group-item {
   overflow: hidden;
@@ -168,9 +175,6 @@ li.list-group-item.ng-scope a:hover {
 }
 textarea.form-control {
   padding: 4px;
-}
-button.btn.btn-default {
-  height: 50px;
 }
 div button.btn.btn-lg.btn-primary.btn-block {
   margin-bottom: 15px;

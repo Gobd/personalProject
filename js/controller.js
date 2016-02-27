@@ -68,4 +68,6 @@ $scope.logout = function(){
   $state.reload();
 };
 
+$scope.loginToChat = false;
+
 });

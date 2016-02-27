@@ -20,7 +20,7 @@
 
   <div class="row">
 
-    <div ng-class="class" class="sidebar col-sm-3 col-lg-9">
+    <div ng-class="class" class="sidebar col-sm-3 col-lg-3">
           <div id="addChannel">
             CHANNELS ({{rooms.length}})
             <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
@@ -48,12 +48,13 @@
       <form name="newTextForm" ng-submit="chat()">
           <div class="input-group chatInp">
             <span class="input-group-btn">
-              <button ng-disabled="newTextForm.$invalid" class="btn btn-default" type="submit">Go</button>
+              <button ng-disabled="newTextForm.$invalid || !authData" class="btn btn-default specific" type="submit">Go</button>
             </span>
-            <textarea ng-model="chatText" class="form-control" placeholder="CHT..." required></textarea>
-            <!-- <input type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required> -->
+            <input ng-focus="loginToChat = !loginToChat" ng-blur="loginToChat = !loginToChat" type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required>
           </div>
       </form>
+
+      <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
 
       <ul class="list-group" id="chatLog">
         <!-- ng-if removes empty object at beginning -->
