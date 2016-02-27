@@ -1,8 +1,6 @@
-angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef, authRef, $stateParams){
+angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, authRef, roomsRef, $stateParams, loginSvc){
 
-//easy way to add date to posts, firebase timestamp wouldn't work with moment and livestamp
-var date = new Date().toISOString();
-
+//authData for ng-ifs on chat page
 $scope.authData = authRef;
 
 // first we get the rooms and room content to fill the rooms sidebar
@@ -24,10 +22,12 @@ $scope.createRoom = function() {
     $scope.showAdd = false;
 };
 
-//this adds a chat to the open room with firebase timestamp
+//this adds a chat to the open room with a fancy firebase timestamp
   $scope.chat = function () {
     $scope.room.$add({text: $scope.chatText,
-                      time: Firebase.ServerValue.TIMESTAMP});
+                      time: Firebase.ServerValue.TIMESTAMP,
+                      name: $scope.authData.password.email,
+                      profileImg: $scope.authData.password.profileImageURL});
         $scope.chatText = '';
   };
 
@@ -61,5 +61,11 @@ $scope.showAdd = false;
 
 //lets us put the current room in the top bar
   $scope.currentRoom = $stateParams.roomName;
+
+  //for logout button
+$scope.logout = function(){
+  loginSvc.logout();
+  $state.reload();
+};
 
 });

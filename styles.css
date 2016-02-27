@@ -31,6 +31,8 @@ body, html {
   height: 80px;
 }
 span.currentRoom {
+  white-space: nowrap;
+  overflow: hidden;
   font-size: 28px;
   margin-left: 25px;
 }
@@ -70,12 +72,25 @@ div.col-xs-3 img {
   margin-left: 90%;
 }
 div.col-xs-6 a {
+  transform: translateY(-10px);
   margin-right: 30px;
   position: absolute;
   right: 0;
   font-size: 16px;
   color: black;
   text-decoration: none;
+}
+span.loggedInAs {
+  transform: translateY(-30px);
+  margin-right: 30px;
+  position: absolute;
+  right: 0;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
+}
+span.loggedInAs a {
+  margin: 8px 50px 0 0;
 }
 .channelList {
   margin-top: 10px;
@@ -150,6 +165,18 @@ li.list-group-item.ng-scope a:hover {
 }
 .form-control.register {
   margin-bottom: 15px;
+}
+textarea.form-control {
+  padding: 4px;
+}
+button.btn.btn-default {
+  height: 50px;
+}
+div button.btn.btn-lg.btn-primary.btn-block {
+  margin-bottom: 15px;
+}
+div.signupForms.ng-scope a {
+  margin: 0 20px 0 20px;
 }
 @media (max-width: 800px) {
   .chatSection {

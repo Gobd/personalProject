@@ -5,6 +5,9 @@
     <input ng-model="password" type="password" id="inputPassword" class="form-control register" placeholder="Password" required>
     <button ng-disabled="loginForm.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
   </form>
+  <p>Will redirect to Lobby if successful</p>
   <span ng-if="success">Logged in!</span>
     <span ng-if="fail">Failed: {{fail}}</span>
+    <a href="#" ui-sref="register">Register</a>
+    <a href="#" ui-sref="rooms">Rooms</a>
 </div>

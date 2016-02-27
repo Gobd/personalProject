@@ -1,4 +1,4 @@
-angular.module('app').service('loginSvc', function(fb, $q){
+angular.module('app').service('loginSvc', function(fb, $q, $firebaseAuth){
 
   var ref = new Firebase(fb.url);
 
@@ -34,14 +34,14 @@ angular.module('app').service('loginSvc', function(fb, $q){
               return defered.promise;
           };
 
-//retrieves authdata so we know if a user is logged in or not, which we will resolve in most states
-  this.authData = function(){
-    return ref.getAuth();
-  };
+//used to persist login, resolve in router with waitForAuth
+        this.auth = function(){
+          return $firebaseAuth(ref);
+        };
 
-  // this.authData();
-
-// var date = new Date();
-// moment(date).isAfter(moment.unix(1456681385));
+//for logout button
+        this.logout = function(){
+          ref.unauth();
+        };
 
 });

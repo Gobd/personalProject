@@ -8,19 +8,20 @@ angular.module('app', ['firebase', 'ui.router'])
 
   $stateProvider
     .state('rooms', {
-      url: "/rooms/{roomName}",
+      url: "/rooms/:roomName",
       params: {roomName: { value: "Lobby" }},
       templateUrl: "partials/rooms.html",
       controller: 'ctrl',
       resolve: {
-        roomRef: function($stateParams, svc, loginSvc) {
+        roomRef: function($stateParams, svc) {
           return svc.getRoom($stateParams.roomName);
         },
         roomsRef: function(svc) {
           return svc.getRooms();
         },
         authRef: function(loginSvc) {
-          return loginSvc.authData();
+          var ref = loginSvc.auth();
+          return ref.$waitForAuth();
         }
       }
     })
