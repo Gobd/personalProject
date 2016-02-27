@@ -112,6 +112,14 @@ span.loggedInAs a {
   color: #F68657;
   margin-top: 10px;
 }
+.loginToAdd {
+  margin: auto;
+  width: 142px;
+  font-size: 16px;
+  color: #F68657;
+  margin-top: 10px;
+  margin-bottom: -10px;
+}
 .list-group-item {
   overflow: hidden;
 }

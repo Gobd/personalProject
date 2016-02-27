@@ -68,6 +68,8 @@ $scope.logout = function(){
   $state.reload();
 };
 
+//let users know why they can't add channels or chat
 $scope.loginToChat = false;
+$scope.loginToAdd = false;
 
 });
