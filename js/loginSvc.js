@@ -34,4 +34,14 @@ angular.module('app').service('loginSvc', function(fb, $q){
               return defered.promise;
           };
 
+//retrieves authdata so we know if a user is logged in or not, which we will resolve in most states
+  this.authData = function(){
+    return ref.getAuth();
+  };
+
+  // this.authData();
+
+// var date = new Date();
+// moment(date).isAfter(moment.unix(1456681385));
+
 });

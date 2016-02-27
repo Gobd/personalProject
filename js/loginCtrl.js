@@ -28,7 +28,4 @@ $scope.login = function(){
   $scope.password = '';
 };
 
-// var authData = ref.getAuth();
-// if (authData) then they are logged in
-
 });

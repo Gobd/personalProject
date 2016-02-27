@@ -9,11 +9,10 @@ body, html {
   overflow: hidden;
 }
 .sidebar {
-  border-top-right-radius: 20px;
   min-width: 200px;
   max-width: 300px;
   background-color: #443242;
-  height: 94vh;
+  height: 96vh;
   padding-top: 15px;
   width: 25%;
   z-index: 1;
@@ -27,7 +26,21 @@ body, html {
   z-index: 0;
 }
 .topBar {
+  overflow: hidden;
+  background-color: #6184DB;
   height: 80px;
+}
+span.currentRoom {
+  font-size: 28px;
+  margin-left: 25px;
+}
+.topBar div{
+  color: black;
+  margin-left:auto;
+  margin-right:0;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }
 ul#chatLog.list-group li.list-group-item{
   background-color: white;
@@ -52,6 +65,17 @@ ul#chatLog.list-group li.list-group-item{
   line-height: 30px;
   color: #9A8998;
   font-size: 16px;
+}
+div.col-xs-3 img {
+  margin-left: 90%;
+}
+div.col-xs-6 a {
+  margin-right: 30px;
+  position: absolute;
+  right: 0;
+  font-size: 16px;
+  color: black;
+  text-decoration: none;
 }
 .channelList {
   margin-top: 10px;
@@ -130,7 +154,7 @@ li.list-group-item.ng-scope a:hover {
 @media (max-width: 800px) {
   .chatSection {
     width: 100%;
-    transform: translateY(-101%);
+    transform: translateY(-102%);
     z-index: 0;
     min-width: 100%;
   }
@@ -145,6 +169,9 @@ li.list-group-item.ng-scope a:hover {
   -moz-transition: all .2s ease-in-out;
   -o-transition: all .2s ease-in-out;
   transition: all .2s ease-in-out;
+  }
+  .topBar div {
+    min-width: 75px;
   }
 .glyphicon.glyphicon-menu-hamburger {
   font-size: 50px;
@@ -168,6 +195,9 @@ li.list-group-item.ng-scope a:hover {
 }
 .bottomAlign {
   margin: 15px 15px 15px 22px;
+}
+span.currentRoom {
+  display: none;
 }
 }
 }

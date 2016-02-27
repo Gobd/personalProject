@@ -13,11 +13,14 @@ angular.module('app', ['firebase', 'ui.router'])
       templateUrl: "partials/rooms.html",
       controller: 'ctrl',
       resolve: {
-        roomRef: function($stateParams, svc) {
+        roomRef: function($stateParams, svc, loginSvc) {
           return svc.getRoom($stateParams.roomName);
         },
         roomsRef: function(svc) {
           return svc.getRooms();
+        },
+        authRef: function(loginSvc) {
+          return loginSvc.authData();
         }
       }
     })

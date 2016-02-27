@@ -1,8 +1,19 @@
 <div class="container-fluid">
+
   <div class="row topBar">
-    <span ng-click="changeClass()" class="glyphicon glyphicon-menu-hamburger"></span>
-    <span># {{currentRoom}}</span>
+      <div class="col-xs-3">
+        <span class="currentRoom"># {{currentRoom}}</span>
+        <span ng-click="changeClass()" class="glyphicon glyphicon-menu-hamburger">
+        </span>
+      </div>
+    <div class="col-xs-3"><img src="logo.png" height="60px" alt=""></div>
+      <div class="col-xs-6">
+        <a href="#"  ui-sref="login">Login</a>
+        <br>
+        <a href="#"  ui-sref="register">Register</a>
+      </div>
   </div>
+
   <div class="row">
 
     <div ng-class="class" class="sidebar col-sm-3">
@@ -15,7 +26,7 @@
               <span class="input-group-btn">
                 <button ng-disabled="channelStat || channelSymbols || newRoomForm.$invalid" class="btn btn-default" type="submit">Go</button>
               </span>
-              <input type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="Create channel..." required>
+              <input type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="Add channel..." required>
             </div>
             <p class="channelError" ng-if="exist && channelStat">Channel already exists</p>
             <p class="channelError" ng-if="showAdd && channelSymbols">No symbols</p>
@@ -45,7 +56,7 @@
 
             <div class="chatContainer">
               <div class="gravImg"><img src="grav.png" height="45px" alt=""></div>
-              <div class="chatContent"><span class="chatName">Brian Kemper</span> <span class="chatTime" data-livestamp="{{chat.time}}"></span>
+              <div class="chatContent"><span class="chatName">Brian Kemper</span> <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
               <p class="chatText">{{chat.text}}</p></div>
             </div>
 

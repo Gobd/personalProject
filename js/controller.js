@@ -1,7 +1,9 @@
-angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef, $stateParams){
+angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, roomsRef, authRef, $stateParams){
 
 //easy way to add date to posts, firebase timestamp wouldn't work with moment and livestamp
 var date = new Date().toISOString();
+
+$scope.authData = authRef;
 
 // first we get the rooms and room content to fill the rooms sidebar
 $scope.rooms = $firebaseArray(roomsRef);
@@ -22,10 +24,10 @@ $scope.createRoom = function() {
     $scope.showAdd = false;
 };
 
-//this adds a chat to the open room
+//this adds a chat to the open room with firebase timestamp
   $scope.chat = function () {
     $scope.room.$add({text: $scope.chatText,
-                      time: date});
+                      time: Firebase.ServerValue.TIMESTAMP});
         $scope.chatText = '';
   };
 
