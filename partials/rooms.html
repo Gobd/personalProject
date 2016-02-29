@@ -58,12 +58,12 @@
       <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
 
       <ul class="list-group" id="chatLog">
+        <show-time show="modalShown" info="modalInfo"></show-time>
         <!-- ng-if removes empty object at beginning -->
           <div ng-if="$index>0" ng-repeat="chat in room | orderBy:time:true" ng-class="{'last':$last}">
             <div class="chatContainer">
-              <show-time show="modalShown" info="{{modalInfo}}"></show-time>
               <div class="gravImg"><img ng-src="{{chat.profileImg}}" height="45px" alt=""></div>
-              <div class="chatContent"><span ng-click="modalShow({chat:chat})" class="chatName">{{chat.name}}</span> <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
+              <div class="chatContent"><span ng-click="modalShow(chat)" class="chatName">{{chat.name}}</span> <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
               <p class="chatText">{{chat.text}}</p></div>
             </div>
 

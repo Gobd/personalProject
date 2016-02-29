@@ -8,12 +8,10 @@ angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray
 //hide modal normally, click name to toggle modal
 $scope.modalShown = false;
 $scope.modalShow = function(chat){
-  if($scope.modalShown) {
-    $scope.modalShown = false;
-  } else {
-    $scope.modalInfo = chat;
-    $scope.modalShown = true;
-  }
+  var temp = chat;
+    $scope.modalShown = !$scope.modalShown;
+    temp.time = new Date(chat.time);
+    $scope.modalInfo = temp;
 };
 
 //function that removes vowels and even sometimes y

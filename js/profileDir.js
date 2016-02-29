@@ -1,25 +1,15 @@
 angular.module('app').directive('showTime', function(){
   return {
     restrict: 'E',
-    template: "<div id='profileDir' ng-show='show'>HELLO GUY{{info}}</div>",
+    template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content'>{{'User: ' + info.name}}<br>Posted: {{info.time | date:'short'}}<br>Username: Placeholder</div></div></div>",
     scope: {
-      info: '@',
+      info: '=',
       show: '='
     },
-    replace: true,
-    transclude: true,
     link: function(scope, element, attrs) {
-      element.css({
-        color: 'black',
-        fontWeight: 'bold'
-        });
-      element.on('mousedown', function(){
-        scope.time = new Date();
-        scope.$apply();
-        });
-      var currentTime = new Date();
-      scope.time = currentTime;
-      scope.gmtTime = currentTime.toGMTString();
+      scope.hideModal = function() {
+          scope.show = false;
+        };
     }
   };
 });
