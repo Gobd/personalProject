@@ -49,12 +49,13 @@
       <form name="newTextForm" ng-submit="chat()">
           <div class="input-group chatInp">
             <span class="input-group-btn">
-              <button ng-disabled="newTextForm.$invalid || !authData" class="btn btn-default specific" type="submit">Go</button>
+              <button ng-disabled="newTextForm.$invalid || !authData || noChat" class="btn btn-default specific" type="submit">Go</button>
             </span>
-            <input ng-focus="loginToChat = !loginToChat" ng-blur="loginToChat = !loginToChat" type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required>
+            <input ng-change="chatVowelChecker()" ng-focus="loginToChat = !loginToChat" ng-blur="loginToChat = !loginToChat" type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required>
           </div>
       </form>
 
+      <div ng-if="authData && noChat && loginToChat" class="loginToChat">More consonants please</div>
       <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
 
       <ul class="list-group" id="chatLog">

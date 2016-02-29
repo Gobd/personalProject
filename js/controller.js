@@ -21,6 +21,20 @@ function deVowel(str) {
 }
 }
 
+//disable chat input if there are only vowels
+$scope.noChat = false;
+$scope.chatVowelChecker = function (){
+  if ($scope.chatText) {
+    if (deVowel($scope.chatText).length === 0) {
+      $scope.noChat = true;
+    } else {
+      $scope.noChat = false;
+    }
+  } else if (!$scope.chatText) {
+    $scope.noChat = false;
+  }
+};
+
 //authData for ng-ifs on chat page
 $scope.authData = authRef;
 

@@ -2,7 +2,7 @@ angular.module('app', ['firebase', 'ui.router'])
 
 .constant('fb', {url: 'http://personalp.firebaseio.com/'})
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
 
   $urlRouterProvider.otherwise("/landing");
 
