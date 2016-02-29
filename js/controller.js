@@ -65,7 +65,7 @@ $scope.showAdd = false;
   //for logout button
 $scope.logout = function(){
   loginSvc.logout();
-  $state.reload();
+  $state.go('landing');
 };
 
 //let users know why they can't add channels or chat

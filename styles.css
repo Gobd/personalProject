@@ -191,6 +191,80 @@ div button.btn.btn-lg.btn-primary.btn-block {
 div.signupForms.ng-scope a {
   margin: 0 20px 0 20px;
 }
+/*Landing page styling*/
+.landingRowOne {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #6184DB;
+  height: 225px;
+}
+.centerTop {
+  width: 570px;
+  margin: auto;
+}
+.centerTop img {
+  transform: translate(300%, 50%);
+}
+#vowelsSuck {
+  font-size: 28px;
+  color: black;
+  transform: translate(8%, 200%);
+}
+#loginThing {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  font-size: 18px;
+  color: #443242;
+  text-decoration: none;
+}
+.landingRowOne a {
+  position: absolute;
+  top: 40px;
+  right: 15px;
+  font-size: 18px;
+  color: #443242;
+  text-decoration: none;
+}
+#redirectMessageLanding {
+  transform: translateX(22%);
+}
+#inputEmailLanding, #inputPasswordLanding, button.btn.btn-lg.btn-primary.btn-block.landingLoginButton{
+  margin-top: 75px;
+  display: inline-block;
+  width: 225px;
+}
+button.btn.btn-lg.btn-primary.btn-block.landingLoginButton {
+  background-color: #443242;
+  width: 100px;
+  margin-top: 10px;
+}
+.landingRowTwo {
+  height: 300px;
+}
+.landingRowTwo img {
+  transform: translate(-28%, -4%);
+}
+.graph {
+  margin: auto;
+  width: 250px;
+}
+.landingRowThree {
+  background-color: #443242;
+  height: 300px;
+}
+.thirdBarLanding {
+  width: 300px;
+  margin: auto;
+}
+.thirdBarLanding p {
+  margin-top: 30px;
+  text-align: center;
+  color: black;
+  font-size: 24px;
+}
+/*Media query for smaller screens*/
 @media (max-width: 800px) {
   .chatSection {
     transform: translateY(-102%);
