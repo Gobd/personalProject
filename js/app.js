@@ -37,15 +37,6 @@ angular.module('app', ['firebase', 'ui.router'])
       url: "/landing",
       templateUrl: "partials/landing.html",
       controller: 'loginCtrl',
-      resolve: {
-        authRef: function(loginSvc) {
-          var ref = loginSvc.auth();
-          var auth = ref.$waitForAuth();
-          if (auth) {
-            console.log('skipped landbecause you are logged in');
-            $state.go('rooms');}
-        }
-      }
     });
 
     $urlRouterProvider.otherwise("/landing");

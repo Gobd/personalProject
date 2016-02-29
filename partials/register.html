@@ -3,7 +3,7 @@
     <h2 class="form-signin-heading">Please register</h2>
     <input ng-model="email" type="email" id="inputEmail" class="form-control register" placeholder="Email address" required autofocus>
     <input ng-model="password" type="password" id="inputPassword" class="form-control register" placeholder="Password" required>
-    <input ng-model="username" type="password" id="inputUsername" class="form-control register" placeholder="Username" required>
+    <input ng-model="username" type="text" id="inputUsername" class="form-control register" placeholder="Username" required>
     <button ng-disabled="loginForm.$invalid" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
   </form>
   <span ng-if="success">User {{success.uid}} successfully made. <br><a href="#" ui-sref="login">Please login.</a></span>

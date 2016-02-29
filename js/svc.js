@@ -4,6 +4,14 @@ angular.module('app').service('svc', function(fb, $q){
     return new Firebase(fb.url + '/rooms/');
   };
 
+  // this.getUserInfo = function(uid){
+  //   var promise = new Firebase(fb.url + '/users/' + uid);
+  //   promise.then(function(response){
+  //     console.log(response);
+  //     return response;
+  //   });
+  // };
+
   this.getRoom = function(name) {
     var deferred = $q.defer();
     var ref = new Firebase(fb.url + '/rooms/');
