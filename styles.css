@@ -8,6 +8,16 @@ body, html {
   height: 100%;
   overflow: hidden;
 }
+#profileDir {
+  position: absolute;
+  overflow: hidden;
+  top: 42%;
+  right: 50px;
+  z-index: 10;
+  height: 200px;
+  width: 300px;
+  background-color: red;
+}
 .sidebar {
   min-width: 200px;
   max-width: 300px;

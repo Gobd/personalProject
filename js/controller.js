@@ -5,6 +5,17 @@ angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray
  return Math.floor(Math.random()*2);
 }
 
+//hide modal normally, click name to toggle modal
+$scope.modalShown = false;
+$scope.modalShow = function(chat){
+  if($scope.modalShown) {
+    $scope.modalShown = false;
+  } else {
+    $scope.modalInfo = chat;
+    $scope.modalShown = true;
+  }
+};
+
 //function that removes vowels and even sometimes y
 function deVowel(str) {
   var ret = '';
