@@ -334,10 +334,10 @@ div.ng-scope.last {
   float: left;
   opacity: .2;
   z-index: 1;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
   }
   .topBar div {
     min-width: 75px;
@@ -349,18 +349,18 @@ div.ng-scope.last {
 .showNav{
   min-width: 190px;
   opacity: .96;
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 .hideNav{
   opacity: .2;
   transform: translateX(-190px);
-  -webkit-transition: all .2s ease-in-out;
-  -moz-transition: all .2s ease-in-out;
-  -o-transition: all .2s ease-in-out;
-  transition: all .2s ease-in-out;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 .bottomAlign {
   margin: 15px 15px 15px 22px;
