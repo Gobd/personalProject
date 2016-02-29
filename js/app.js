@@ -4,12 +4,12 @@ angular.module('app', ['firebase', 'ui.router'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise("/rooms/Lobby");
+  $urlRouterProvider.otherwise("/landing");
 
   $stateProvider
     .state('rooms', {
       url: "/rooms/:roomName",
-      params: {roomName: { value: "Lobby" }},
+      params: {roomName: { value: "Lbb" }},
       templateUrl: "partials/rooms.html",
       controller: 'ctrl',
       resolve: {

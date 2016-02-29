@@ -1,5 +1,26 @@
 angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, authRef, roomsRef, $stateParams, loginSvc){
 
+//random bool function for the sometimes y removal
+  function randBool(){
+ return Math.floor(Math.random()*2);
+}
+
+//function that removes vowels and even sometimes y
+function deVowel(str) {
+  var ret = '';
+  if (!str) {return true;}
+  else {
+  for (var i=0; i<str.length; i++) {
+    if ((/y/i.test(str[i]) && randBool()) || /[aeiou]/i.test(str[i])) {
+      ret[i] += '';
+    } else {
+      ret += str[i];
+    }
+  }
+  return ret;
+}
+}
+
 //authData for ng-ifs on chat page
 $scope.authData = authRef;
 
@@ -16,15 +37,16 @@ var roomsList = [];
   });
 
 //this creates a new room
-$scope.createRoom = function() {
-    $scope.rooms.$add({name: this.roomTitle});
+    $scope.createRoom = function() {
+    var room = deVowel(this.roomTitle);
+    $scope.rooms.$add({name: room});
     this.roomTitle = '';
     $scope.showAdd = false;
 };
 
-//this adds a chat to the open room with a fancy firebase timestamp
+//this adds a chat to the open room with a fancy firebase timestamp, we add roomcheck from the channelchecker function because of sometimes y
   $scope.chat = function () {
-    $scope.room.$add({text: $scope.chatText,
+    $scope.room.$add({text: roomCheck,
                       time: Firebase.ServerValue.TIMESTAMP,
                       name: $scope.authData.password.email,
                       profileImg: $scope.authData.password.profileImageURL});
@@ -38,14 +60,19 @@ $scope.showAdd = false;
   $scope.exist = false;
   $scope.channelStat = false;
   $scope.channelSymbols = false;
+  $scope.vowels = false;
   $scope.channelChecker = function(){
    var that = this;
+   var roomCheck = deVowel(that.roomTitle);
     that.channelStat = false;
-    that.channelSymbols = /[^A-Za-z0-9\s]/g.test(that.roomTitle);
+    that.vowels = false;
+    that.channelSymbols = /[^A-Za-z0-9\s]/g.test(roomCheck);
     roomsList.forEach(function(a){
-      if (a === that.roomTitle) {
+      if (a === roomCheck) {
         that.channelStat = true;
         that.exist = true;
+      } else if (!roomCheck) {
+        that.vowels = true;
       }
       });
   };
