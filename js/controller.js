@@ -60,7 +60,8 @@ var roomsList = [];
 
 //this adds a chat to the open room with a fancy firebase timestamp, we add roomcheck from the channelchecker function because of sometimes y
   $scope.chat = function () {
-    $scope.room.$add({text: roomCheck,
+    var newestText = deVowel($scope.chatText);
+    $scope.room.$add({text: newestText,
                       time: Firebase.ServerValue.TIMESTAMP,
                       name: $scope.authData.password.email,
                       profileImg: $scope.authData.password.profileImageURL});
