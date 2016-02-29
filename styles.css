@@ -246,6 +246,9 @@ button.btn.btn-lg.btn-primary.btn-block.landingLoginButton {
 .landingRowTwo img {
   transform: translate(-28%, -4%);
 }
+a#loginROOMS {
+  transform: translateY(35%);
+}
 .graph {
   margin: auto;
   width: 250px;
@@ -292,9 +295,6 @@ div.ng-scope.last {
   }
   .topBar div {
     min-width: 75px;
-  }
-  #loginROOMS{
-    transform: translateY(38%);
   }
 .glyphicon.glyphicon-menu-hamburger {
   font-size: 50px;
