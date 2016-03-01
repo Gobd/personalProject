@@ -3,9 +3,9 @@ angular.module('app').controller('ctrl', function(fb, $scope, $state, $firebaseA
   //authData for ng-ifs on chat page
   $scope.authData = authRef;
 
+//for getting the username
   var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
   $scope.userInfo = $firebaseObject(userRef);
-
 
 //random bool function for the sometimes y removal
   function randBool(){
@@ -54,6 +54,11 @@ $scope.chatVowelChecker = function (){
 // first we get the rooms and room content to fill the rooms sidebar
 $scope.rooms = $firebaseArray(roomsRef);
 $scope.room = $firebaseArray(roomRef);
+
+//delete chat function
+$scope.delete = function(id){
+  $scope.room.$remove(id);
+};
 
 //makes array of current room names so people can't overwrite existing rooms
 var roomsList = [];
