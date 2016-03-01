@@ -68,7 +68,9 @@ $scope.room = $firebaseArray(roomRef);
 
 //delete chat function
 $scope.delete = function(id){
-  $scope.room.$remove(id);
+  if (confirm("Delete post?") === true) {
+    $scope.room.$remove(id);
+  }
 };
 
 //makes array of current room names so people can't overwrite existing rooms
