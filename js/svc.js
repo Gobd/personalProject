@@ -9,7 +9,7 @@ this.searchG = function(query){
               }).then(function(response) {
                 var ret = response.data.data;
                 var rand = Math.floor(Math.random()*ret.length);
-                return ret[rand].images.downsized.url;
+                return ret[rand].images.fixed_height.url;
             });
           };
 

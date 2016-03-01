@@ -161,6 +161,14 @@ span.loggedInAs a {
   font-size: 16px;
   color: #F68657;
   margin-top: 10px;
+  margin-bottom: -10px;
+}
+.loginToChatGif {
+  margin: auto;
+  width: 180px;
+  font-size: 11px;
+  color: black;
+  margin-top: 10px;
 }
 .loginToAdd {
   margin: auto;

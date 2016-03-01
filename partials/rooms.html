@@ -56,6 +56,7 @@
             <input ng-change="chatVowelChecker()" ng-focus="loginToChat = !loginToChat" ng-blur="loginToChat = !loginToChat" type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required>
           </div>
         </form>
+        <p class="loginToChatGif" ng-if="loginToChat && chatText && authData && !noChat">Try adding a gif by: gif(search terms)</p>
         <div ng-if="authData && noChat && loginToChat" class="loginToChat">More consonants please</div>
         <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
         <ul class="list-group" id="chatLog">
