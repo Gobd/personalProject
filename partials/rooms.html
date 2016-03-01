@@ -68,6 +68,7 @@
                 <span ng-click="modalShow(chat)" class="chatName">{{chat.username || chat.name}}</span>
                 <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
                 <p class="chatText" ng-click="delete(chat)">{{chat.text}}</p>
+                <p ng-if="chat.gif"><img ng-src="{{chat.gif}}" alt=""></p>
               </div>
             </div>
           </div>

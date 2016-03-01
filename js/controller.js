@@ -88,14 +88,28 @@ var roomsList = [];
 };
 
 //this adds a chat to the open room with a fancy firebase timestamp, we add roomcheck from the channelchecker function because of sometimes y
+//also regex checks for gif(search terms) and if it exists adds it to the post
   $scope.chat = function () {
     var newestText = deVowel($scope.chatText);
+    var regex = /(gif\()(\w+( \w+)*)(\))/g;
+    var match = regex.exec($scope.chatText);
+    if (match) {
+      svc.searchG(match[2]).then(function(response){
+      $scope.room.$add({text: newestText,
+                        time: Firebase.ServerValue.TIMESTAMP,
+                        username: $scope.userInfo.name,
+                        name: $scope.authData.password.email,
+                        profileImg: $scope.authData.password.profileImageURL,
+                        gif: response});});
+          $scope.chatText = '';
+    } else {
     $scope.room.$add({text: newestText,
                       time: Firebase.ServerValue.TIMESTAMP,
                       username: $scope.userInfo.name,
                       name: $scope.authData.password.email,
                       profileImg: $scope.authData.password.profileImageURL});
         $scope.chatText = '';
+      }
   };
 
 //initially hide the add channel input
