@@ -1,4 +1,11 @@
-angular.module('app').controller('ctrl', function($scope, $state, $firebaseArray, svc, roomRef, authRef, roomsRef, $stateParams, loginSvc){
+angular.module('app').controller('ctrl', function(fb, $scope, $state, $firebaseArray, $firebaseObject, svc, roomRef, authRef, roomsRef, $stateParams, loginSvc){
+
+  //authData for ng-ifs on chat page
+  $scope.authData = authRef;
+
+  var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
+  $scope.userInfo = $firebaseObject(userRef);
+
 
 //random bool function for the sometimes y removal
   function randBool(){
@@ -44,9 +51,6 @@ $scope.chatVowelChecker = function (){
   }
 };
 
-//authData for ng-ifs on chat page
-$scope.authData = authRef;
-
 // first we get the rooms and room content to fill the rooms sidebar
 $scope.rooms = $firebaseArray(roomsRef);
 $scope.room = $firebaseArray(roomRef);
@@ -72,6 +76,7 @@ var roomsList = [];
     var newestText = deVowel($scope.chatText);
     $scope.room.$add({text: newestText,
                       time: Firebase.ServerValue.TIMESTAMP,
+                      username: $scope.userInfo.name,
                       name: $scope.authData.password.email,
                       profileImg: $scope.authData.password.profileImageURL});
         $scope.chatText = '';
