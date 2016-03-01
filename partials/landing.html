@@ -4,6 +4,7 @@
       <div class="centerTop">
         <img src="logo.png" height="60px" alt="">
         <p ng-if="!showAddLogin" id="vowelsSuck">Because vowels are a waste of time</p>
+        <onlineusersdir ng-if="!showAddLogin" class="landingUsers" onlineusers="fake"></onlineusersdir>
         <div ng-if="showAddLogin" class="signupFormsLanding">
           <form class="form-signin" name="loginForm" ng-submit="login(email, password)">
             <input ng-model="email" type="email" id="inputEmailLanding" class="form-control register" placeholder="Email address" required autofocus>

@@ -7,6 +7,17 @@ angular.module('app').controller('ctrl', function(fb, $scope, $state, $firebaseA
   var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
   $scope.userInfo = $firebaseObject(userRef);
 
+//for how many users online, log length of arr to see # of users
+var amOnline = new Firebase(fb.url + '/.info/connected');
+var userOn = new Firebase(fb.url + '/presence/' + $scope.authData.uid);
+amOnline.on('value', function(snapshot) {
+  if (snapshot.val()) {
+    userOn.onDisconnect().remove();
+    userOn.set(true);
+  }
+});
+$scope.onlineUsers = $firebaseArray(svc.onlineUsers());
+
 //random bool function for the sometimes y removal
   function randBool(){
  return Math.floor(Math.random()*2);

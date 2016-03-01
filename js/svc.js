@@ -13,4 +13,9 @@ angular.module('app').service('svc', function(fb, $q){
     return deferred.promise;
   };
 
+  this.onlineUsers = function(){
+    var userOnRef = new Firebase(fb.url + '/presence/');
+    return userOnRef;
+  };
+
 });

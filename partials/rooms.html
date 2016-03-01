@@ -1,77 +1,80 @@
 <div class="container-fluid">
   <div class="row topBar">
-      <div class="col-xs-3">
-        <span class="currentRoom"># {{currentRoom}}</span>
-        <span ng-click="changeClass()" class="glyphicon glyphicon-menu-hamburger">
-        </span>
-      </div>
+    <div class="col-xs-3">
+      <span class="currentRoom">#
+        {{currentRoom}}</span>
+      <span ng-click="changeClass()" class="glyphicon glyphicon-menu-hamburger"></span>
+    </div>
     <div class="col-xs-3"><img src="logo.png" height="60px" alt=""></div>
-      <div class="col-xs-6">
-<span ng-if="!authData">
-  <a id="loginROOMS" href="#" ui-sref="login">Login</a>
-  <a href="#" ui-sref="register">Register</a>
-</span>
-          <span class="loggedInAs" ng-if="authData">Hi, {{userInfo.name}} <a href="#" ng-click="logout()">Logout</a>
-          </span>
-      </div>
+    <div class="col-xs-6">
+      <span ng-if="!authData">
+        <a id="loginROOMS" href="#" ui-sref="login">Login</a>
+        <a href="#" ui-sref="register">Register</a>
+      </span>
+      <span class="loggedInAs" ng-if="authData">Hi,
+        {{userInfo.name}}
+        <a href="#" ng-click="logout()">Logout</a>
+      </span>
+    </div>
   </div>
 
   <div class="row">
 
     <div ng-class="class" class="sidebar col-sm-3 col-lg-3">
-          <div id="addChannel">
-            CHNNLS ({{rooms.length}})
-            <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
-          </div>
-        <form class="channelAdd" ng-if="showAdd" name="newRoomForm" ng-submit="createRoom()">
-            <div class="input-group">
-              <span class="input-group-btn">
-                <button ng-disabled="channelStat || channelSymbols || newRoomForm.$invalid || !authData ||vowels" class="btn btn-default" type="submit">Go</button>
-              </span>
-              <input ng-focus="loginToAdd = !loginToAdd" ng-blur="loginToAdd = !loginToAdd" type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="dd chnnl..." required>
-            </div>
-            <div ng-if="!authData && loginToAdd" class="loginToAdd">Please login to CHT</div>
-            <p class="channelError" ng-if="exist && channelStat">Channel already exists</p>
-            <p class="channelError" ng-if="vowels">More consonants please</p>
-            <p class="channelError" ng-if="showAdd && channelSymbols">No symbols</p>
-        </form>
+      <div id="addChannel">
+        CHNNLS ({{rooms.length}})
+        <span ng-click="showAdd = !showAdd" class="glyphicon glyphicon-plus-sign"></span>
+      </div>
+      <form class="channelAdd" ng-show="showAdd" name="newRoomForm" ng-submit="createRoom()">
+        <div class="input-group">
+          <span class="input-group-btn">
+            <button ng-disabled="channelStat || channelSymbols || newRoomForm.$invalid || !authData ||vowels" class="btn btn-default" type="submit">Go</button>
+          </span>
+          <input ng-focus="loginToAdd = !loginToAdd" ng-blur="loginToAdd = !loginToAdd" type="text" ng-model="roomTitle" ng-change="channelChecker()" class="form-control" placeholder="dd chnnl..." required>
+        </div>
+        <div ng-if="!authData && loginToAdd" class="loginToAdd">Please login to CHT</div>
+        <p class="channelError" ng-if="exist && channelStat">Channel already exists</p>
+        <p class="channelError" ng-if="vowels">More consonants please</p>
+        <p class="channelError" ng-if="showAdd && channelSymbols">No symbols</p>
+      </form>
       <ul class="list-group channelList">
-          <li ng-repeat="room in rooms" class="list-group-item" ui-sref-active="activeChannel">
-            <a href="#"  ui-sref="rooms({roomName: room.name})"># {{room.name}}</a>
-          </li>
+        <li ng-repeat="room in rooms" class="list-group-item" ui-sref-active="activeChannel">
+          <a href="#" ui-sref="rooms({roomName: room.name})">#
+            {{room.name}}</a>
+        </li>
       </ul>
+      <onlineusersdir class="sideBarUsers" onlineusers="onlineUsers.length"></onlineusersdir>
     </div>
 
-  <div class="chatSection col-sm-9 col-xs-12 col-lg-9">
-    <div class="bottomAlign">
-
-      <form name="newTextForm" ng-submit="chat()">
+    <div class="chatSection col-sm-9 col-xs-12 col-lg-9">
+      <div class="bottomAlign">
+        <form name="newTextForm" ng-submit="chat()">
           <div class="input-group chatInp">
             <span class="input-group-btn">
               <button ng-disabled="newTextForm.$invalid || !authData || noChat" class="btn btn-default specific" type="submit">Go</button>
             </span>
             <input ng-change="chatVowelChecker()" ng-focus="loginToChat = !loginToChat" ng-blur="loginToChat = !loginToChat" type="text" ng-model="chatText" class="form-control" placeholder="CHT..." required>
           </div>
-      </form>
-
-      <div ng-if="authData && noChat && loginToChat" class="loginToChat">More consonants please</div>
-      <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
-
-      <ul class="list-group" id="chatLog">
-        <show-time show="modalShown" info="modalInfo"></show-time>
-        <!-- ng-if removes empty object at beginning -->
+        </form>
+        <div ng-if="authData && noChat && loginToChat" class="loginToChat">More consonants please</div>
+        <div ng-if="!authData && loginToChat" class="loginToChat">Please login to CHT</div>
+        <ul class="list-group" id="chatLog">
+          <show-time show="modalShown" info="modalInfo"></show-time>
+          <!-- ng-if removes empty object at beginning -->
           <div ng-if="$index>0" ng-repeat="chat in room | orderBy:time:true" ng-class="{'last':$last}">
             <div class="chatContainer">
               <div class="gravImg"><img ng-src="{{chat.profileImg}}" height="45px" alt=""></div>
-              <div class="chatContent"><span ng-click="modalShow(chat)" class="chatName">{{chat.username || chat.name}}</span> <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
-              <p class="chatText" ng-click="delete(chat)">{{chat.text}}</p></div>
+              <div class="chatContent">
+                <span ng-click="modalShow(chat)" class="chatName">{{chat.username || chat.name}}</span>
+                <span class="chatTime" data-livestamp="{{chat.time/1000}}"></span>
+                <p class="chatText" ng-click="delete(chat)">{{chat.text}}</p>
+              </div>
             </div>
-
           </div>
-      </ul>
-
+        </ul>
+      </div>
     </div>
-  </div>
 
   </div>
+
 </div>

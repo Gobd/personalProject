@@ -1,7 +1,15 @@
-angular.module('app').controller('loginCtrl', function($scope, loginSvc, $state){
+angular.module('app').controller('loginCtrl', function($interval, $scope, loginSvc, $state){
 
   //hide login on landpage intiially
   $scope.showAddLogin = false;
+
+  //fake userdata
+  //faking the userdata
+  $scope.fake = 792836;
+  var increment = function(){
+      $scope.fake ++;
+  };
+$scope.fakeUsers = $interval(increment, 400);
 
 //register function that will display success or failure message depending on results of $q promises in service
 $scope.register = function(){
