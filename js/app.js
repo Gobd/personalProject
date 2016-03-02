@@ -27,16 +27,34 @@ angular.module('app', ['firebase', 'ui.router'])
       url: "/login",
       templateUrl: "partials/login.html",
       controller: 'loginCtrl',
+      resolve: {
+        authRef: function(loginSvc) {
+          var ref = loginSvc.auth();
+          return ref.$waitForAuth();
+        }
+      }
     })
     .state('register', {
       url: "/register",
       templateUrl: "partials/register.html",
       controller: 'loginCtrl',
+      resolve: {
+        authRef: function(loginSvc) {
+          var ref = loginSvc.auth();
+          return ref.$waitForAuth();
+        }
+      }
     })
     .state('landing', {
       url: "/landing",
       templateUrl: "partials/landing.html",
       controller: 'loginCtrl',
+      resolve: {
+        authRef: function(loginSvc) {
+          var ref = loginSvc.auth();
+          return ref.$waitForAuth();
+        }
+      }
     });
 
     $urlRouterProvider.otherwise("/landing");

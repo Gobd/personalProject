@@ -16,8 +16,13 @@
             <span ng-if="fail">Failed: {{fail}}</span>
         </div>
       </div>
-      <a id="loginThing" ng-click="showAddLogin = !showAddLogin">Login</a>
-      <a href="#" ui-sref="register">Register</a>
+<div ng-if="authData" id="landingLoggedIn">
+  <a id="one">Hi, {{userInfo.name}}</a>
+  <a id="two" href="#" ui-sref="rooms">Go to rooms</a>
+  <a id="three" href="#" ng-click="logout()">Logout</a>
+</div>
+      <a ng-if="!authData" id="loginThing" ng-click="showAdd()">Login</a>
+      <a ng-if="!authData" href="#" ui-sref="register">Register</a>
   </div>
 
   <div class="row landingRowTwo">

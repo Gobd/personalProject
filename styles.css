@@ -22,6 +22,17 @@ body, html {
   height: 100%;
   overflow: hidden;
 }
+a#one:hover {
+  color: #443242;
+}
+a#two {
+  position: absolute;
+  transform: translateY(80%);
+}
+a#three {
+  position: absolute;
+  transform: translateY(160%);
+}
 .ng-modal-overlay {
   position:absolute;
   z-index:9999;

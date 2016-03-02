@@ -1,7 +1,25 @@
-angular.module('app').controller('loginCtrl', function($interval, $scope, loginSvc, $state){
+angular.module('app').controller('loginCtrl', function(fb, $firebaseObject, $interval, $scope, loginSvc, $state, authRef){
+
+//auth data to change login and register to rooms buttons if already logged in
+$scope.authData = authRef;
+
+//for getting the username
+if($scope.authData) {
+  var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
+  $scope.userInfo = $firebaseObject(userRef);
+}
+
+  //for logout button
+$scope.logout = function(){
+  loginSvc.logout();
+  $state.go('landing');
+};
 
   //hide login on landpage intiially
   $scope.showAddLogin = false;
+  $scope.showAdd = function(){
+    $scope.showAddLogin = !$scope.showAddLogin;
+  };
 
   //fake userdata
   //faking the userdata

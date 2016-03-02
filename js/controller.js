@@ -3,13 +3,16 @@ angular.module('app').controller('ctrl', function(fb, $scope, $state, $firebaseA
   //authData for ng-ifs on chat page
   $scope.authData = authRef;
 
-//for getting the username
-  var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
-  $scope.userInfo = $firebaseObject(userRef);
+  //for getting the username
+  if($scope.authData) {
+    var userRef = new Firebase(fb.url + '/users/' + $scope.authData.uid);
+    $scope.userInfo = $firebaseObject(userRef);
+    // for online user detection moved here to avoid errors with users not being logged in
+    var userOn = new Firebase(fb.url + '/presence/' + $scope.authData.uid);
+  }
 
 //for how many users online, log length of arr to see # of users
 var amOnline = new Firebase(fb.url + '/.info/connected');
-var userOn = new Firebase(fb.url + '/presence/' + $scope.authData.uid);
 amOnline.on('value', function(snapshot) {
   if (snapshot.val()) {
     userOn.onDisconnect().remove();
@@ -17,7 +20,6 @@ amOnline.on('value', function(snapshot) {
   }
 });
 $scope.onlineUsers = $firebaseArray(svc.onlineUsers());
-
 //random bool function for the sometimes y removal
   function randBool(){
  return Math.floor(Math.random()*2);
